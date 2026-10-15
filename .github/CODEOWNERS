@@ -1,0 +1,4 @@
+* @aktoriukas
+
+# Keep the approval rule itself owned by the repository owner.
+/.github/ @aktoriukas

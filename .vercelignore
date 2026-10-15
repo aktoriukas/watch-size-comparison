@@ -1,0 +1,8 @@
+.vercel
+.env*
+.git
+.github
+.gitignore
+.DS_Store
+README.md
+CONTRIBUTING.md

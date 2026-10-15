@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#090f18">
+  <meta name="description" content="Compare case size, screen, straps, controls and published thickness for ten popular smartwatches at the same scale.">
+  <link rel="canonical" href="https://watch.aktoriukas.com/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Watch Size Comparison">
+  <meta property="og:title" content="Watch Size Comparison">
+  <meta property="og:description" content="See ten popular smartwatches at one scale. Compare the case, screen, controls and published thickness.">
+  <meta property="og:url" content="https://watch.aktoriukas.com/">
+  <meta property="og:image" content="https://watch.aktoriukas.com/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Same-scale outlines of popular watches on a dark background">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Watch Size Comparison">
+  <meta name="twitter:description" content="Compare the whole watch, at one scale.">
+  <meta name="twitter:image" content="https://watch.aktoriukas.com/og.png">
+  <title>Watch size comparison</title>
+  <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <style>
+    :root { color-scheme: dark; font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #e9f1f8; background: #090f18; }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button { font: inherit; }
+    button:focus-visible, a:focus-visible { outline: 3px solid #7cceff; outline-offset: 3px; }
+    a { color: #87cfff; }
+    .wrap { width: min(1280px, calc(100% - 40px)); margin: 0 auto; }
+    main { padding-top: 20px; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+    .board { display: grid; grid-template-columns: minmax(0, 1.17fr) minmax(340px, .83fr); gap: 18px; align-items: start; }
+    .panel { background: #111c29; border: 1px solid #2a3b4b; border-radius: 20px; box-shadow: 0 8px 34px #0004; }
+    .plot-panel { overflow: hidden; }
+    .panel-head { display: flex; gap: 14px; justify-content: space-between; align-items: start; padding: 21px 24px 0; }
+    .panel-head h2, .gallery-section h2 { margin: 0; font-size: 20px; letter-spacing: -.025em; }
+    .panel-head p { margin: 5px 0 0; color: #9eafbd; font-size: 13px; line-height: 1.45; }
+    .count { flex: none; padding: 5px 9px; border-radius: 7px; background: #223b49; color: #a6e6e6; font-size: 12px; font-weight: 750; }
+    .plot-wrap { width: 100%; padding: 2px 24px 8px; }
+    .plot-wrap svg, .profile-wrap svg { display: block; width: min(100%, 500px); height: auto; margin: 0 auto; }
+    .profile-wrap { border-top: 1px solid #2a3b4b; padding: 13px 24px 10px; }
+    .profile-head { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; color: #d7e6f0; font-size: 12px; font-weight: 750; }
+    .profile-head span { color: #9eafbd; font-size: 11px; font-weight: 400; }
+    .plot-panel .below { padding: 0 24px 22px; color: #a8b9c5; font-size: 12px; line-height: 1.5; }
+    .outline-case { fill: none; stroke: currentColor; stroke-width: 3; vector-effect: non-scaling-stroke; }
+    .outline-screen { fill: none; stroke: currentColor; stroke-width: 1.55; vector-effect: non-scaling-stroke; }
+    .outline-hardware { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; opacity: .72; }
+    .outline-detail { fill: none; stroke: currentColor; stroke-width: 1; vector-effect: non-scaling-stroke; opacity: .37; }
+    #overlay-plot .watch-group, #profile-plot .watch-group { transition: opacity .14s ease; }
+    #overlay-plot .watch-group.is-muted, #profile-plot .watch-group.is-muted { opacity: .12; }
+    .guide { stroke: #3c4d5a; stroke-width: 1; vector-effect: non-scaling-stroke; }
+    .guide-text { fill: #a2b4c2; font-size: 11px; font-family: inherit; }
+    .selection-panel { padding: 21px 20px 18px; }
+    .selection-panel .panel-head { padding: 0 3px 16px; }
+    .toolbar { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 12px; }
+    .toolbar button { padding: 7px 10px; border: 1px solid #365064; border-radius: 8px; background: #1b2b3a; color: #d5e7f2; cursor: pointer; font-size: 12px; font-weight: 700; }
+    .toolbar button:hover { background: #294154; }
+    .watch-list { display: grid; gap: 5px; }
+    .watch-toggle { display: grid; grid-template-columns: 20px minmax(0, 1fr) auto; align-items: center; width: 100%; gap: 11px; padding: 11px 12px; border: 1px solid transparent; border-radius: 11px; background: transparent; color: inherit; text-align: left; cursor: pointer; }
+    .watch-toggle:hover { background: #1a2b39; }
+    .watch-toggle[aria-pressed="true"] { border-color: #2f4b5b; background: #1a2b39; }
+    .watch-toggle[aria-pressed="false"] { color: #94a5b3; }
+    .swatch { width: 17px; height: 17px; border: 2px solid var(--watch-color); border-radius: 50%; }
+    .watch-toggle[aria-pressed="true"] .swatch { background: var(--watch-color); box-shadow: inset 0 0 0 4px #1a2b39; }
+    .watch-name { display: block; font-size: 13px; font-weight: 750; line-height: 1.3; }
+    .watch-spec { display: block; margin-top: 3px; font-size: 11.5px; line-height: 1.3; }
+    .watch-toggle[aria-pressed="true"] .watch-spec { color: #a7bac7; }
+    .type-tag { padding: 3px 5px; border-radius: 5px; background: #253742; color: #a8c1cc; font-size: 10px; font-weight: 750; text-transform: uppercase; }
+    .gallery-section { padding: 28px 0 20px; }
+    .gallery-head { display: flex; align-items: baseline; justify-content: space-between; gap: 15px; margin-bottom: 17px; }
+    .gallery-head p { margin: 0; color: #a6b5c3; font-size: 13px; }
+    .gallery { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+    .face-card { min-width: 0; padding: 12px 10px 14px; background: #111c29; border: 1px solid #2a3b4b; border-radius: 16px; }
+    .face-card svg { display: block; width: 100%; margin: auto; }
+    .face-card .front-svg { max-width: 175px; aspect-ratio: 1; }
+    .face-card .profile-svg { max-width: 175px; aspect-ratio: 220 / 68; }
+    .face-profile { margin: 5px 0 9px; border-top: 1px solid #2a3b4b; }
+    .profile-depth { margin: 0; color: #eaf2f8; font-size: 11.5px; font-weight: 700; }
+    .profile-depth small { color: #a4b6c3; font-size: 10px; font-weight: 400; }
+    .face-card h3 { min-height: 2.5em; margin: 2px 0 4px; color: #eaf2f8; font-size: 13px; line-height: 1.25; }
+    .face-card .dim { margin: 0; color: #a4b6c3; font-size: 11.5px; line-height: 1.5; }
+    .face-card .controls-label { margin: 6px 0 0; color: #c5d3de; font-size: 11px; line-height: 1.4; }
+    .face-card .source-links { display: flex; flex-wrap: wrap; column-gap: 12px; }
+    .face-card a { display: inline-block; margin-top: 9px; font-size: 11.5px; font-weight: 700; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+    .notes { margin: 0 0 28px; color: #a4b4c1; font-size: 12px; line-height: 1.6; }
+    .notes summary { width: fit-content; cursor: pointer; color: #b7dcf4; font-weight: 700; }
+    .notes-content { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; padding-top: 12px; }
+    .notes p { margin: 0; }
+    .notes strong { color: #dfebf4; }
+    .site-credit { padding-bottom: 22px; color: #93a8b8; font-size: 11px; text-align: center; }
+    .site-credit a { color: #b8d3e4; text-underline-offset: 2px; }
+    @media (max-width: 1040px) { .gallery { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+    @media (max-width: 860px) { .board { grid-template-columns: 1fr; } .watch-list { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 680px) { .wrap { width: min(100% - 24px, 560px); } main { padding-top: 12px; } .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); } .notes-content { grid-template-columns: 1fr; gap: 11px; } .gallery-head { display: block; } }
+    @media (max-width: 520px) { .watch-list { grid-template-columns: 1fr; } .plot-wrap { padding: 0 18px 6px; } .selection-panel { padding: 18px 12px; } .panel-head { padding: 18px 18px 0; } .profile-wrap { padding: 12px 18px 8px; } .plot-panel .below { padding: 0 18px 18px; } }
+    @media (prefers-reduced-motion: reduce) { #overlay-plot .watch-group, #profile-plot .watch-group { transition: none; } }
+    @media print { :root { color-scheme: light; color: #152333; background: #fff; } .board { grid-template-columns: 1fr 1fr; } .toolbar { display: none; } .gallery { grid-template-columns: repeat(5, 1fr); } .panel, .face-card { box-shadow: none; break-inside: avoid; } }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <h1 class="sr-only">Watch size comparison</h1>
+
+    <div class="board">
+      <section class="panel plot-panel" aria-labelledby="overlay-title">
+        <div class="panel-head"><div><h2 id="overlay-title">Overlay</h2></div><span class="count" id="selected-count">5 of 10</span></div>
+        <div class="plot-wrap"><svg id="overlay-plot" viewBox="0 0 460 580" role="img" aria-label="Overlaid watch case and screen outlines at a shared scale"></svg></div>
+        <div class="profile-wrap"><div class="profile-head">Side profile <span>case depth at the same scale</span></div><svg id="profile-plot" viewBox="0 0 460 136" role="img" aria-label="Overlaid watch side profiles at a shared scale"></svg></div>
+        <div class="below">Case: thick line · screen/glass: thin line · shared 10 mm scale</div>
+      </section>
+
+      <section class="panel selection-panel" aria-labelledby="selection-title">
+        <div class="panel-head"><div><h2 id="selection-title">Watches</h2><p id="status" class="sr-only" aria-live="polite">Five original watches are shown.</p></div></div>
+        <div class="toolbar" aria-label="Selection shortcuts"><button type="button" id="original-five">Original five</button><button type="button" id="show-all">Show all 10</button><button type="button" id="clear-all">Clear</button></div>
+        <div class="watch-list" id="watch-list"></div>
+      </section>
+    </div>
+
+    <section class="gallery-section" aria-labelledby="gallery-title">
+      <div class="gallery-head"><h2 id="gallery-title">Side by side</h2></div>
+      <div class="gallery" id="gallery"></div>
+    </section>
+
+    <details class="notes">
+      <summary>Measurement notes</summary>
+      <div class="notes-content">
+        <p><strong>Outlines.</strong> Case width and height use published front-view dimensions. The inner line is the active display on nine watches. Apple Watch Ultra 4 uses its published front-glass boundary.</p>
+        <p><strong>Illustrations.</strong> Button type, count and placement follow manufacturer references. Button protrusion, lug shape, band length and exact case contours are approximate. Apple and Samsung band widths are illustrative.</p>
+        <p><strong>Thickness.</strong> Side profiles use published depth and case height. Balance 3 includes its sensor; its case alone is 12.5 mm. T-Rex 3 and PACE 4 published depths exclude the sensor. Bezel, case, back and strap contours are simplified from manufacturer imagery, not engineering drawings; makers may measure depth differently.</p>
+      </div>
+    </details>
+  </main>
+
+  <footer class="site-credit wrap">Built by <a href="https://aktoriukas.com/">Aktoriukas</a></footer>
+
+  <script>
+  (() => {
+    'use strict';
+    const inch = 25.4;
+    const watches = [
+      { id:'balance', name:'Amazfit Balance 3', short:'Balance 3', brand:'Amazfit', shape:'round', caseW:51.4, caseH:51.4, screenW:38.1, screenH:38.1, band:22, depth:14.6, bodyDepth:12.5, depthNote:'incl. sensor', controls:[['left',-.29,'pusher'],['left',.29,'pusher'],['right',-.28,'crown'],['right',.29,'pusher']], controlLabel:'Crown upper right · 3 buttons', color:'#ff805d', source:'https://uk.amazfit.com/products/balance-3', hardwareSource:'https://www.amazfit.jp/products/amazfit-balance3' },
+      { id:'fenix51', name:'Garmin fēnix 9 · 51 mm', short:'fēnix 9 51', brand:'Garmin', shape:'round', caseW:51, caseH:51, screenW:35.6, screenH:35.6, band:26, depth:14.7, controls:[['left',-.32,'pusher'],['left',0,'pusher'],['left',.32,'pusher'],['right',-.32,'pusher'],['right',.32,'pusher']], controlLabel:'3 buttons left · 2 right', color:'#6db7ff', source:'https://www.garmin.com/en-US/compare/?compareProduct=2021175', hardwareSource:'https://www8.garmin.com/manuals/webhelp/GUID-708A8F4D-9A78-49CF-9528-DE109BBCC472/EN-US/GUID-1D70AD49-FB15-4958-AF1D-841B8908F883.html', note:'Standard model' },
+      { id:'ultra', name:'Apple Watch Ultra 4', short:'Ultra 4', brand:'Apple', shape:'apple-ultra', caseW:44, caseH:49, screenW:35.79, screenH:43.07, screenType:'glass', band:24, depth:12, depthSource:'https://support.apple.com/en-mide/148758', controls:[['left',.02,'action'],['right',-.28,'crown'],['right',.3,'side']], controlLabel:'Action left · crown & side button right', color:'#c791ff', source:'https://developer.apple.com/download/files/accessories/dimensional-drawings/apple-watch-ultra-4.pdf', hardwareSource:'https://support.apple.com/guide/watch/use-buttons-and-gestures-apd1d9d7efca/watchos' },
+      { id:'fenix47', name:'Garmin fēnix 9 · 47 mm', short:'fēnix 9 47', brand:'Garmin', shape:'round', caseW:47, caseH:47, screenW:35.6, screenH:35.6, band:22, depth:13.8, controls:[['left',-.32,'pusher'],['left',0,'pusher'],['left',.32,'pusher'],['right',-.32,'pusher'],['right',.32,'pusher']], controlLabel:'3 buttons left · 2 right', color:'#65d5ab', source:'https://www.garmin.com/en-US/compare/?compareProduct=2021193', hardwareSource:'https://www8.garmin.com/manuals/webhelp/GUID-708A8F4D-9A78-49CF-9528-DE109BBCC472/EN-US/GUID-1D70AD49-FB15-4958-AF1D-841B8908F883.html', note:'Standard model' },
+      { id:'trex', name:'Amazfit T-Rex 3', short:'T-Rex 3', brand:'Amazfit', shape:'octagon', caseW:48.5, caseH:48.5, screenW:38.1, screenH:38.1, band:22, depth:13.75, depthNote:'sensor excluded', controls:[['left',-.3,'rugged'],['left',.3,'rugged'],['right',-.3,'rugged'],['right',.3,'rugged']], controlLabel:'2 buttons on each side', color:'#ffc261', source:'https://uk.amazfit.com/products/amazfit-t-rex-3', hardwareSource:'https://support.amazfit.com/en/amazfit_t-rex_3/imgs/electronic_manual.pdf' },
+      { id:'series12', name:'Apple Watch Series 12 · 46 mm', short:'Series 12', brand:'Apple', shape:'apple', caseW:40.28, caseH:46.38, screenW:32.45, screenH:38.69, band:22, depth:9.7, depthSource:'https://support.apple.com/en-mide/148589', controls:[['right',-.27,'crown'],['right',.27,'side']], controlLabel:'Crown & side button right', color:'#ff8bb5', source:'https://developer.apple.com/download/files/accessories/dimensional-drawings/apple-watch-series-12-46mm.pdf', hardwareSource:'https://support.apple.com/guide/watch/use-buttons-and-gestures-apd1d9d7efca/watchos' },
+      { id:'galaxy', name:'Samsung Galaxy Watch9 · 44 mm', short:'Watch9 44', brand:'Samsung', shape:'cushion', caseW:43.7, caseH:46, screenW:37.3, screenH:37.3, band:20, depth:8.6, controls:[['right',-.26,'side'],['right',.26,'side']], controlLabel:'2 slim buttons right', color:'#75baff', source:'https://www.samsung.com/uk/watches/galaxy-watch/galaxy-watch9-44mm-graphite-bluetooth-sm-l350nzkaeub/', hardwareSource:'https://www.samsung.com/sg/support/mobile-devices/fix-galaxy-watch-button-issues/' },
+      { id:'gt7', name:'Huawei Watch GT 7 · 46 mm', short:'GT 7 46', brand:'Huawei', shape:'round', caseW:46, caseH:46, screenW:1.47*inch, screenH:1.47*inch, band:22, depth:10.95, depthSource:'https://consumer.huawei.com/nz/wearables/watch-gt7/specs/', controls:[['right',-.27,'crown'],['right',.29,'pusher']], controlLabel:'Crown & button right', color:'#a5c66b', source:'https://consumer.huawei.com/uk/wearables/watch-gt7/specs/', hardwareSource:'https://consumer.huawei.com/uk/wearables/watch-gt7/' },
+      { id:'forerunner', name:'Garmin Forerunner 970', short:'Forerunner 970', brand:'Garmin', shape:'round', caseW:47, caseH:47, screenW:35.3, screenH:35.3, band:22, depth:12.9, controls:[['left',-.32,'pusher'],['left',0,'pusher'],['left',.32,'pusher'],['right',-.32,'pusher'],['right',.32,'pusher']], controlLabel:'3 buttons left · 2 right', color:'#baa2ff', source:'https://www.garmin.com/pt-PT/p/1462801/', hardwareSource:'https://www8.garmin.com/manuals/webhelp/GUID-025D75CF-3445-49E1-8D81-1AA74AB4E00F/EN-GB/GUID-E9B8D548-6B6D-4050-8F3B-145B48B3CFF5.html' },
+      { id:'pace', name:'COROS PACE 4', short:'PACE 4', brand:'COROS', shape:'round', caseW:43.4, caseH:43.4, screenW:1.2*inch, screenH:1.2*inch, band:22, depth:11.8, depthNote:'sensor excluded', controls:[['left',.32,'action'],['right',-.27,'crown'],['right',.32,'pusher']], controlLabel:'Action lower left · dial & button right', color:'#ef8c80', source:'https://fr.coros.com/pace4/specs', hardwareSource:'https://support.coros.com/hc/en-us/articles/42961616826900-Set-Up-Your-COROS-PACE-4' }
+    ];
+    const byId = Object.fromEntries(watches.map(w => [w.id, w]));
+    const original = watches.slice(0, 5).map(w => w.id);
+    const storageKey = 'watch-size-lab-selection-v1';
+    let visible = new Set(original);
+    try { const saved = JSON.parse(localStorage.getItem(storageKey)); if (Array.isArray(saved) && saved.every(id => byId[id])) visible = new Set(saved); } catch (_) {}
+    const fmt = n => Number.isInteger(n) ? String(n) : n.toFixed(1).replace(/\.0$/, '');
+    const fmtDepth = n => Number.isInteger(n) ? String(n) : n.toFixed(2).replace(/0+$/, '').replace(/\.$/, '');
+    const depthText = w => `${fmtDepth(w.depth)} mm${w.depthNote ? ` (${w.depthNote})` : ''}`;
+    const spec = w => `${fmt(w.caseH)} × ${fmt(w.caseW)} mm case · ${w.screenType === 'glass' ? 'glass' : 'screen'} ${w.screenW === w.screenH ? `${fmt(w.screenW)} mm` : `${fmt(w.screenH)} × ${fmt(w.screenW)} mm`}`;
+
+    function drawing(w, scale, cx, cy, top, bottom, detailed=false) {
+      const cw=w.caseW*scale, ch=w.caseH*scale, sw=w.screenW*scale, sh=w.screenH*scale;
+      const x=cx-cw/2, y=cy-ch/2, sx=cx-sw/2, sy=cy-sh/2;
+      const bw=w.band*scale, lowerY=y+ch, bandX=cx-bw/2;
+      const roundRectRadius=w.shape==='cushion' ? cw*.39 : cw*.23;
+      const straps=`<rect class="outline-hardware" x="${bandX}" y="${top}" width="${bw}" height="${Math.max(0,y-top)}" rx="${Math.min(7,scale*1.5)}"/><rect class="outline-hardware" x="${bandX}" y="${lowerY}" width="${bw}" height="${Math.max(0,bottom-lowerY)}" rx="${Math.min(7,scale*1.5)}"/>`;
+      let lugs='';
+      if (w.shape==='round'||w.shape==='octagon') {
+        const spread=(w.id==='trex'?4.2:w.id==='balance'?3.4:w.id.startsWith('fenix')?3:2)*scale;
+        const rise=(w.id==='balance'?8:6)*scale;
+        const lx=bandX-spread, rx=cx+bw/2+spread;
+        lugs=`<path class="outline-hardware" d="M${bandX} ${y-scale*3} L${lx} ${y+rise} M${cx+bw/2} ${y-scale*3} L${rx} ${y+rise} M${bandX} ${lowerY+scale*3} L${lx} ${lowerY-rise} M${cx+bw/2} ${lowerY+scale*3} L${rx} ${lowerY-rise}"/>`;
+        if(w.id==='balance') lugs+=`<path class="outline-detail" d="M${bandX+scale*2} ${y+scale*1} L${bandX-scale*1.3} ${y+scale*5} M${cx+bw/2-scale*2} ${y+scale*1} L${cx+bw/2+scale*1.3} ${y+scale*5} M${bandX+scale*2} ${lowerY-scale*1} L${bandX-scale*1.3} ${lowerY-scale*5} M${cx+bw/2-scale*2} ${lowerY-scale*1} L${cx+bw/2+scale*1.3} ${lowerY-scale*5}"/>`;
+      } else if (w.shape==='cushion') {
+        lugs=`<path class="outline-detail" d="M${bandX} ${y+scale*5} Q${cx} ${y-scale*5} ${cx+bw/2} ${y+scale*5} M${bandX} ${lowerY-scale*5} Q${cx} ${lowerY+scale*5} ${cx+bw/2} ${lowerY-scale*5}"/>`;
+      }
+      let body;
+      if (w.shape==='round') body=`<circle class="outline-case" cx="${cx}" cy="${cy}" r="${cw/2}"/>`;
+      else if (w.shape==='octagon') {
+        const c=cw*.23;
+        body=`<polygon class="outline-case" stroke-linejoin="round" points="${x+c},${y} ${x+cw-c},${y} ${x+cw},${y+c} ${x+cw},${y+ch-c} ${x+cw-c},${y+ch} ${x+c},${y+ch} ${x},${y+ch-c} ${x},${y+c}"/>`;
+      } else body=`<rect class="outline-case" x="${x}" y="${y}" width="${cw}" height="${ch}" rx="${roundRectRadius}"/>`;
+      const screen=(w.shape==='apple'||w.shape==='apple-ultra') ? `<rect class="outline-screen" x="${sx}" y="${sy}" width="${sw}" height="${sh}" rx="${sw*.25}"/>` : `<circle class="outline-screen" cx="${cx}" cy="${cy}" r="${sw/2}"/>`;
+
+      // Attach each control to the actual curved case edge at its vertical position.
+      function edgeAt(side, py) {
+        let inset=0;
+        if(w.shape==='round') inset=cw/2-Math.sqrt(Math.max(0,(cw/2)**2-(py-cy)**2));
+        else if(w.shape==='octagon') {
+          const cut=cw*.23;
+          inset=Math.max(0,cut-(py-y),cut-(lowerY-py));
+        } else {
+          const r=roundRectRadius, cornerY=py<cy?y+r:lowerY-r;
+          if(py<y+r||py>lowerY-r) inset=r-Math.sqrt(Math.max(0,r*r-(py-cornerY)**2));
+        }
+        return side==='left'?x+inset:x+cw-inset;
+      }
+      function control([side,fraction,kind]) {
+        const py=cy+fraction*ch, right=side==='right';
+        const dimensions={crown:[2.7,6.1],pusher:[1.8,3.2],rugged:[2.5,5.2],action:[1.8,6.5],side:[1.4,5.1]};
+        const [protrusionMm,heightMm]=dimensions[kind], height=heightMm*scale;
+        const radial=w.shape==='round';
+        let bx,by,width,transform='';
+        if(radial) {
+          // Rotate the control to the circle's tangent, with its root inside the case.
+          const edge=edgeAt(side,py);
+          const angle=Math.atan2(py-cy,edge-cx)*180/Math.PI;
+          bx=-scale*.85; by=-height/2; width=(protrusionMm+.85)*scale;
+          transform=` transform="translate(${edge} ${py}) rotate(${angle})"`;
+        } else {
+          const topEdge=edgeAt(side,py-height*.46), bottomEdge=edgeAt(side,py+height*.46);
+          const root=right?Math.min(topEdge,bottomEdge)-scale*.65:Math.max(topEdge,bottomEdge)+scale*.65;
+          const tip=edgeAt(side,py)+(right?1:-1)*protrusionMm*scale;
+          bx=right?root:tip; by=py-height/2; width=Math.abs(tip-root);
+        }
+        const radius=kind==='crown'?scale*.75:kind==='rugged'?scale*.3:scale*.5;
+        let result=`<g class="control" data-kind="${kind}" data-side="${side}"${transform}><rect class="outline-hardware" x="${bx}" y="${by}" width="${width}" height="${height}" rx="${radius}"/>`;
+        if(kind==='crown') {
+          const faceX=radial||right?bx+width-scale*.45:bx+scale*.45;
+          result+=`<path class="outline-detail" d="M${faceX} ${by+scale*.6}v${height-scale*1.2}"/>`;
+          for(let i=1;i<=5;i++) {
+            const ky=by+height*i/6;
+            result+=`<path class="outline-hardware" d="M${faceX-scale*.32} ${ky}h${scale*.64}"/>`;
+          }
+        } else if(kind==='rugged') {
+          result+=`<path class="outline-detail" d="M${bx+width*.25} ${by+height*.2}v${height*.6}"/>`;
+        }
+        return result+'</g>';
+      }
+      const controls=w.controls.map(control).join('');
+      let details='';
+      if(detailed&&(w.shape==='round'||w.shape==='octagon')) {
+        const bezel=(cw+sw)/4;
+        if(w.shape==='round') details=`<circle class="outline-detail" cx="${cx}" cy="${cy}" r="${bezel}"/>`;
+        else {
+          const cut=bezel*.42;
+          details=`<polygon class="outline-detail" points="${cx-bezel+cut},${cy-bezel} ${cx+bezel-cut},${cy-bezel} ${cx+bezel},${cy-bezel+cut} ${cx+bezel},${cy+bezel-cut} ${cx+bezel-cut},${cy+bezel} ${cx-bezel+cut},${cy+bezel} ${cx-bezel},${cy+bezel-cut} ${cx-bezel},${cy-bezel+cut}"/>`;
+        }
+        if(w.id.startsWith('fenix')) {
+          details+=[-62,0,62,118,180,242].map(angle=>{const a=angle*Math.PI/180,r=cw/2-scale*2.2;return `<circle class="outline-detail" cx="${cx+Math.cos(a)*r}" cy="${cy+Math.sin(a)*r}" r="${scale*.56}"/>`;}).join('');
+        }
+      }
+      if(detailed&&w.shape==='apple-ultra') details=`<path class="outline-detail" d="M${x+cw-scale*.4} ${cy-ch*.35} Q${x+cw+scale*1.2} ${cy-ch*.34} ${x+cw+scale*1.2} ${cy-ch*.21} L${x+cw+scale*1.2} ${cy+ch*.37}"/>`;
+      return straps+lugs+controls+body+details+screen;
+    }
+
+    function profileDrawing(w, scale, cx, baseline, detailed=false) {
+      const width=w.caseH*scale, depth=w.depth*scale, bodyDepth=(w.bodyDepth||w.depth)*scale;
+      const x=cx-width/2, top=baseline-depth, bodyBottom=top+bodyDepth;
+      const p=(u,v)=>`${x+u*width} ${top+v*bodyDepth}`;
+      // Each silhouette is a side-view interpretation of the manufacturer's case,
+      // kept within the published case length and depth. It is not a CAD section.
+      const outlines={
+        balance:`M${p(.08,0)} L${p(.92,0)} L${p(.96,.08)} L${p(.98,.25)} L${p(1,.39)} L${p(.97,.71)} Q${p(.94,.88)} ${p(.83,.95)} Q${p(.5,1)} ${p(.17,.95)} Q${p(.06,.88)} ${p(.03,.71)} L${p(0,.39)} L${p(.02,.25)} L${p(.04,.08)} Z`,
+        fenix51:`M${p(.09,0)} L${p(.91,0)} L${p(.94,.09)} L${p(.98,.12)} L${p(1,.29)} L${p(.98,.76)} L${p(.91,.87)} L${p(.84,.87)} L${p(.8,1)} L${p(.2,1)} L${p(.16,.87)} L${p(.09,.87)} L${p(.02,.76)} L${p(0,.29)} L${p(.02,.12)} L${p(.06,.09)} Z`,
+        ultra:`M${p(.065,0)} L${p(.935,0)} L${p(.96,.07)} L${p(.96,.16)} L${p(.985,.2)} Q${p(1,.23)} ${p(1,.3)} L${p(1,.63)} Q${p(.99,.77)} ${p(.91,.82)} L${p(.83,.82)} Q${p(.76,1)} ${p(.5,1)} Q${p(.24,1)} ${p(.17,.82)} L${p(.09,.82)} Q${p(.01,.77)} ${p(0,.63)} L${p(0,.3)} Q${p(0,.23)} ${p(.015,.2)} L${p(.04,.16)} L${p(.04,.07)} Z`,
+        fenix47:`M${p(.085,0)} L${p(.915,0)} L${p(.95,.11)} L${p(.98,.15)} L${p(1,.31)} L${p(.975,.73)} L${p(.9,.86)} L${p(.81,.86)} L${p(.77,1)} L${p(.23,1)} L${p(.19,.86)} L${p(.1,.86)} L${p(.025,.73)} L${p(0,.31)} L${p(.02,.15)} L${p(.05,.11)} Z`,
+        trex:`M${p(.13,0)} L${p(.87,0)} L${p(.94,.1)} L${p(.97,.2)} L${p(1,.31)} L${p(1,.63)} L${p(.91,.79)} L${p(.85,.79)} L${p(.77,1)} L${p(.23,1)} L${p(.15,.79)} L${p(.09,.79)} L${p(0,.63)} L${p(0,.31)} L${p(.03,.2)} L${p(.06,.1)} Z`,
+        series12:`M${p(.11,0)} Q${p(.5,-.005)} ${p(.89,0)} Q${p(.99,.02)} ${p(1,.25)} L${p(1,.57)} Q${p(.99,.76)} ${p(.82,.83)} Q${p(.72,1)} ${p(.5,1)} Q${p(.28,1)} ${p(.18,.83)} Q${p(.01,.76)} ${p(0,.57)} L${p(0,.25)} Q${p(.01,.02)} ${p(.11,0)} Z`,
+        galaxy:`M${p(.075,0)} L${p(.925,0)} Q${p(.995,.04)} ${p(1,.22)} L${p(1,.56)} Q${p(.99,.73)} ${p(.86,.83)} L${p(.75,.9)} Q${p(.69,1)} ${p(.5,1)} Q${p(.31,1)} ${p(.25,.9)} L${p(.14,.83)} Q${p(.01,.73)} ${p(0,.56)} L${p(0,.22)} Q${p(.005,.04)} ${p(.075,0)} Z`,
+        gt7:`M${p(.07,0)} L${p(.93,0)} L${p(.97,.11)} L${p(1,.25)} L${p(.99,.61)} L${p(.93,.76)} L${p(.85,.79)} Q${p(.81,.94)} ${p(.68,1)} L${p(.32,1)} Q${p(.19,.94)} ${p(.15,.79)} L${p(.07,.76)} L${p(.01,.61)} L${p(0,.25)} L${p(.03,.11)} Z`,
+        forerunner:`M${p(.085,0)} L${p(.915,0)} L${p(.965,.09)} Q${p(1,.19)} ${p(1,.32)} L${p(.97,.62)} L${p(.87,.78)} L${p(.75,.86)} Q${p(.68,1)} ${p(.5,1)} Q${p(.32,1)} ${p(.25,.86)} L${p(.13,.78)} L${p(.03,.62)} L${p(0,.32)} Q${p(0,.19)} ${p(.035,.09)} Z`,
+        pace:`M${p(.1,0)} Q${p(.5,-.01)} ${p(.9,0)} L${p(.97,.12)} Q${p(1,.22)} ${p(1,.33)} L${p(.96,.63)} Q${p(.9,.78)} ${p(.75,.84)} Q${p(.68,1)} ${p(.5,1)} Q${p(.32,1)} ${p(.25,.84)} Q${p(.1,.78)} ${p(.04,.63)} L${p(0,.33)} Q${p(0,.22)} ${p(.03,.12)} Z`
+      };
+      const bezel={
+        balance:`M${p(.08,.07)} L${p(.92,.07)} M${p(.04,.24)} L${p(.96,.24)} M${p(.17,.88)} Q${p(.5,.96)} ${p(.83,.88)}`,
+        fenix51:`M${p(.09,.08)} L${p(.91,.08)} M${p(.025,.24)} L${p(.975,.24)} M${p(.1,.84)} L${p(.9,.84)}`,
+        ultra:`M${p(.065,.08)} L${p(.935,.08)} M${p(.04,.18)} L${p(.96,.18)} M${p(.17,.82)} Q${p(.5,.91)} ${p(.83,.82)}`,
+        fenix47:`M${p(.085,.09)} L${p(.915,.09)} M${p(.025,.27)} L${p(.975,.27)} M${p(.1,.83)} L${p(.9,.83)}`,
+        trex:`M${p(.13,.09)} L${p(.87,.09)} M${p(.045,.25)} L${p(.955,.25)} M${p(.09,.76)} L${p(.91,.76)}`,
+        series12:`M${p(.1,.09)} Q${p(.5,.04)} ${p(.9,.09)} M${p(.19,.82)} Q${p(.5,.93)} ${p(.81,.82)}`,
+        galaxy:`M${p(.08,.07)} L${p(.92,.07)} M${p(.15,.8)} Q${p(.5,.9)} ${p(.85,.8)}`,
+        gt7:`M${p(.07,.1)} L${p(.93,.1)} M${p(.025,.26)} L${p(.975,.26)} M${p(.15,.78)} L${p(.85,.78)}`,
+        forerunner:`M${p(.085,.09)} L${p(.915,.09)} M${p(.05,.29)} L${p(.95,.29)} M${p(.25,.85)} Q${p(.5,.94)} ${p(.75,.85)}`,
+        pace:`M${p(.1,.09)} Q${p(.5,.05)} ${p(.9,.09)} M${p(.2,.82)} Q${p(.5,.93)} ${p(.8,.82)}`
+      };
+      let result='';
+      if(detailed) {
+        const join=w.shape.startsWith('apple') ? .56 : w.id==='trex' ? .55 : .62;
+        const strapTop=top+bodyDepth*join, strapBottom=strapTop+scale*2.2;
+        const reach=scale*8;
+        result+=`<path class="outline-hardware" d="M${x+scale*.9} ${strapTop} L${x-scale*1.4} ${strapTop-scale*.4} L${x-reach} ${strapTop+scale*1.1} L${x-reach} ${strapBottom+scale*.5} L${x-scale*1.4} ${strapBottom} L${x+scale*.9} ${strapBottom} M${x+width-scale*.9} ${strapTop} L${x+width+scale*1.4} ${strapTop-scale*.4} L${x+width+reach} ${strapTop+scale*1.1} L${x+width+reach} ${strapBottom+scale*.5} L${x+width+scale*1.4} ${strapBottom} L${x+width-scale*.9} ${strapBottom}"/>`;
+      }
+      result+=`<path class="outline-case" d="${outlines[w.id]}"/>`;
+      result+=`<path class="outline-detail" d="${bezel[w.id]}"/>`;
+      result+=`<path class="outline-screen" d="M${p(w.id==='trex'?.15:.12,.025)} L${p(w.id==='trex'?.85:.88,.025)}"/>`;
+      if(w.bodyDepth) {
+        const bumpWidth=Math.min(width*.38,16*scale), bumpHeight=baseline-bodyBottom;
+        const left=cx-bumpWidth/2, right=cx+bumpWidth/2;
+        result+=`<path class="outline-hardware" d="M${left-scale*.4} ${bodyBottom-scale*.35} Q${left} ${bodyBottom+bumpHeight*.15} ${left+bumpWidth*.13} ${bodyBottom+bumpHeight*.67} Q${left+bumpWidth*.2} ${baseline} ${cx} ${baseline} Q${right-bumpWidth*.2} ${baseline} ${right-bumpWidth*.13} ${bodyBottom+bumpHeight*.67} Q${right} ${bodyBottom+bumpHeight*.15} ${right+scale*.4} ${bodyBottom-scale*.35}"/>`;
+      }
+      return result;
+    }
+
+    const list=document.getElementById('watch-list'), gallery=document.getElementById('gallery'), plot=document.getElementById('overlay-plot'), profilePlot=document.getElementById('profile-plot');
+    list.innerHTML=watches.map(w=>`<button type="button" class="watch-toggle" data-id="${w.id}" style="--watch-color:${w.color}" aria-pressed="false" aria-label="Toggle ${w.name}"><span class="swatch" aria-hidden="true"></span><span><span class="watch-name">${w.name}</span><span class="watch-spec">${spec(w)}<br>Depth ${depthText(w)}</span></span><span class="type-tag">${w.screenType==='glass'?'glass':'screen'}</span></button>`).join('');
+    gallery.innerHTML=watches.map(w=>`<article class="face-card" style="color:${w.color}"><svg class="front-svg" viewBox="0 0 220 220" role="img" aria-label="${w.name}, case ${fmt(w.caseH)} by ${fmt(w.caseW)} millimetres, ${w.screenType==='glass'?'front glass':'active screen'} ${w.screenW===w.screenH?fmt(w.screenW)+' millimetres':fmt(w.screenH)+' by '+fmt(w.screenW)+' millimetres'}. ${w.controlLabel}."><g>${drawing(w,2.65,110,110,4,216,true)}</g></svg><h3>${w.name}</h3><p class="dim">Case ${fmt(w.caseH)} × ${fmt(w.caseW)} mm<br>${w.screenType==='glass'?'Front glass':'Active screen'} ${w.screenW===w.screenH?fmt(w.screenW)+' mm':fmt(w.screenH)+' × '+fmt(w.screenW)+' mm'}</p><div class="face-profile"><svg class="profile-svg" viewBox="0 0 220 68" role="img" aria-label="${w.name} illustrative side profile, published depth ${depthText(w)}.">${profileDrawing(w,2.65,110,56,true)}</svg><p class="profile-depth">Depth ${fmtDepth(w.depth)} mm${w.depthNote ? ` <small>(${w.depthNote})</small>` : ''}</p></div><p class="controls-label">${w.controlLabel}</p><div class="source-links"><a href="${w.source}" target="_blank" rel="noopener noreferrer">Dimensions ↗</a>${w.depthSource ? `<a href="${w.depthSource}" target="_blank" rel="noopener noreferrer">Depth ↗</a>` : ''}<a href="${w.hardwareSource}" target="_blank" rel="noopener noreferrer">Controls ↗</a></div></article>`).join('');
+
+    const guides=`<path class="guide" d="M230 50v480 M30 290h400" stroke-dasharray="2 7"/><path class="guide" d="M28 547h56 M28 541v12 M84 541v12"/><text class="guide-text" x="28" y="536">10 mm</text>`;
+    function render() {
+      const ids=watches.filter(w=>visible.has(w.id));
+      plot.innerHTML=`<title>Watch case comparison</title><desc>${ids.length ? ids.map(w=>w.name).join(', ')+' at the same scale, each with an outer case outline and an inner '+(ids.some(w=>w.screenType==='glass')?'screen or glass':'screen')+' outline.' : 'No watch selected.'}</desc>${guides}`+ids.map(w=>`<g class="watch-group" data-id="${w.id}" style="color:${w.color}">${drawing(w,5.6,230,290,16,564,ids.length===1)}</g>`).join('');
+      profilePlot.innerHTML=`<title>Watch thickness comparison</title><desc>${ids.length ? ids.map(w=>`${w.name}: ${depthText(w)}`).join('; ') : 'No watch selected.'} Outlines share the front view scale and align at the back edge.</desc><path class="guide" d="M54 118h352 M31 62v56 M27 62h8 M27 118h8"/><text class="guide-text" x="14" y="55">10 mm</text>`+ids.map(w=>`<g class="watch-group" data-id="${w.id}" style="color:${w.color}">${profileDrawing(w,5.6,230,118)}</g>`).join('');
+      for (const button of list.querySelectorAll('.watch-toggle')) button.setAttribute('aria-pressed',String(visible.has(button.dataset.id)));
+      document.getElementById('selected-count').textContent=`${ids.length} of ${watches.length}`;
+      document.getElementById('status').textContent=ids.length===0?'Select a watch to begin.':`${ids.length} ${ids.length===1?'watch':'watches'} shown. Tap a model to change the overlay.`;
+      try { localStorage.setItem(storageKey,JSON.stringify([...visible])); } catch (_) {}
+    }
+    list.addEventListener('click',event=>{ const button=event.target.closest('.watch-toggle'); if(!button) return; if(visible.has(button.dataset.id)) visible.delete(button.dataset.id); else visible.add(button.dataset.id); render(); });
+    list.addEventListener('pointerover',event=>{ const button=event.target.closest('.watch-toggle'); if(!button || !visible.has(button.dataset.id)) return; document.querySelectorAll('#overlay-plot .watch-group, #profile-plot .watch-group').forEach(g=>g.classList.toggle('is-muted',g.dataset.id!==button.dataset.id)); });
+    list.addEventListener('pointerout',event=>{ if(event.relatedTarget&&list.contains(event.relatedTarget)) return; document.querySelectorAll('#overlay-plot .watch-group, #profile-plot .watch-group').forEach(g=>g.classList.remove('is-muted')); });
+    document.getElementById('original-five').addEventListener('click',()=>{visible=new Set(original); render();});
+    document.getElementById('show-all').addEventListener('click',()=>{visible=new Set(watches.map(w=>w.id)); render();});
+    document.getElementById('clear-all').addEventListener('click',()=>{visible.clear(); render();});
+    render();
+  })();
+  </script>
+</body>
+</html>
