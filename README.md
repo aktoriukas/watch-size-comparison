@@ -4,6 +4,12 @@ Compare the case, display, straps, controls and side profiles of popular watches
 
 **Live site:** [watch.aktoriukas.com](https://watch.aktoriukas.com/)
 
+## Screenshots
+
+![Desktop view showing watch overlays, side profiles, and the watch gallery](docs/images/watch-comparison-desktop.jpg)
+
+![Close-up of the watch gallery with case sizes, controls, and side profiles](docs/images/watch-gallery.jpg)
+
 The site is a standalone, dependency-free HTML page. It includes ten watches and lets you toggle individual models, compare their front outlines, and inspect their side profiles and published thicknesses. The visual contours are simplified illustrations; measurements and source links are shown on the page. Manufacturers may measure thickness differently, including whether a sensor bump is counted.
 
 ## Run locally
