@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark">
   <meta name="theme-color" content="#090f18">
-  <meta name="description" content="Compare case size, screen, straps, controls and published thickness for ten popular smartwatches at the same scale.">
+  <meta name="description" content="Compare case size, screen, straps, controls and published thickness for eleven popular smartwatches at the same scale.">
   <link rel="canonical" href="https://watch.aktoriukas.com/">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Watch Size Comparison">
   <meta property="og:title" content="Watch Size Comparison">
-  <meta property="og:description" content="See ten popular smartwatches at one scale. Compare the case, screen, controls and published thickness.">
+  <meta property="og:description" content="See eleven popular smartwatches at one scale. Compare the case, screen, controls and published thickness.">
   <meta property="og:url" content="https://watch.aktoriukas.com/">
   <meta property="og:image" content="https://watch.aktoriukas.com/og.png">
   <meta property="og:image:width" content="1200">
@@ -117,7 +117,7 @@
 
       <section class="panel selection-panel" aria-labelledby="selection-title">
         <div class="panel-head"><div><h2 id="selection-title">Watches</h2><p id="status" class="sr-only" aria-live="polite">Five original watches are shown.</p></div></div>
-        <div class="toolbar" aria-label="Selection shortcuts"><button type="button" id="original-five">Original five</button><button type="button" id="show-all">Show all 10</button><button type="button" id="clear-all">Clear</button></div>
+        <div class="toolbar" aria-label="Selection shortcuts"><button type="button" id="original-five">Original five</button><button type="button" id="show-all">Show all</button><button type="button" id="clear-all">Clear</button></div>
         <div class="watch-list" id="watch-list"></div>
       </section>
     </div>
@@ -153,7 +153,8 @@
       { id:'galaxy', name:'Samsung Galaxy Watch9 · 44 mm', short:'Watch9 44', brand:'Samsung', shape:'cushion', caseW:43.7, caseH:46, screenW:37.3, screenH:37.3, band:20, depth:8.6, controls:[['right',-.26,'side'],['right',.26,'side']], controlLabel:'2 slim buttons right', color:'#75baff', source:'https://www.samsung.com/uk/watches/galaxy-watch/galaxy-watch9-44mm-graphite-bluetooth-sm-l350nzkaeub/', hardwareSource:'https://www.samsung.com/sg/support/mobile-devices/fix-galaxy-watch-button-issues/' },
       { id:'gt7', name:'Huawei Watch GT 7 · 46 mm', short:'GT 7 46', brand:'Huawei', shape:'round', caseW:46, caseH:46, screenW:1.47*inch, screenH:1.47*inch, band:22, depth:10.95, depthSource:'https://consumer.huawei.com/nz/wearables/watch-gt7/specs/', controls:[['right',-.27,'crown'],['right',.29,'pusher']], controlLabel:'Crown & button right', color:'#a5c66b', source:'https://consumer.huawei.com/uk/wearables/watch-gt7/specs/', hardwareSource:'https://consumer.huawei.com/uk/wearables/watch-gt7/' },
       { id:'forerunner', name:'Garmin Forerunner 970', short:'Forerunner 970', brand:'Garmin', shape:'round', caseW:47, caseH:47, screenW:35.3, screenH:35.3, band:22, depth:12.9, controls:[['left',-.32,'pusher'],['left',0,'pusher'],['left',.32,'pusher'],['right',-.32,'pusher'],['right',.32,'pusher']], controlLabel:'3 buttons left · 2 right', color:'#baa2ff', source:'https://www.garmin.com/pt-PT/p/1462801/', hardwareSource:'https://www8.garmin.com/manuals/webhelp/GUID-025D75CF-3445-49E1-8D81-1AA74AB4E00F/EN-GB/GUID-E9B8D548-6B6D-4050-8F3B-145B48B3CFF5.html' },
-      { id:'pace', name:'COROS PACE 4', short:'PACE 4', brand:'COROS', shape:'round', caseW:43.4, caseH:43.4, screenW:1.2*inch, screenH:1.2*inch, band:22, depth:11.8, depthNote:'sensor excluded', controls:[['left',.32,'action'],['right',-.27,'crown'],['right',.32,'pusher']], controlLabel:'Action lower left · dial & button right', color:'#ef8c80', source:'https://fr.coros.com/pace4/specs', hardwareSource:'https://support.coros.com/hc/en-us/articles/42961616826900-Set-Up-Your-COROS-PACE-4' }
+      { id:'pace', name:'COROS PACE 4', short:'PACE 4', brand:'COROS', shape:'round', caseW:43.4, caseH:43.4, screenW:1.2*inch, screenH:1.2*inch, band:22, depth:11.8, depthNote:'sensor excluded', controls:[['left',.32,'action'],['right',-.27,'crown'],['right',.32,'pusher']], controlLabel:'Action lower left · dial & button right', color:'#ef8c80', source:'https://fr.coros.com/pace4/specs', hardwareSource:'https://support.coros.com/hc/en-us/articles/42961616826900-Set-Up-Your-COROS-PACE-4' },
+      { id:'races', name:'Suunto Race S', short:'Race S', brand:'Suunto', shape:'round', caseW:45, caseH:45, screenW:1.32*inch, screenH:1.32*inch, band:22, depth:11.4, controls:[['right',-.21,'action'],['right',0,'crown'],['right',.21,'action']], controlLabel:'Crown & 2 side buttons right', color:'#f4d35e', source:'https://us.suunto.com/products/suunto-race-s-all-black', hardwareSource:'https://cdn.shopify.com/s/files/1/0863/5275/7023/files/Suunto_Race_S_UserGuide_EN.pdf?v=1735873538' }
     ];
     const byId = Object.fromEntries(watches.map(w => [w.id, w]));
     const original = watches.slice(0, 5).map(w => w.id);
@@ -267,7 +268,8 @@
         galaxy:`M${p(.075,0)} L${p(.925,0)} Q${p(.995,.04)} ${p(1,.22)} L${p(1,.56)} Q${p(.99,.73)} ${p(.86,.83)} L${p(.75,.9)} Q${p(.69,1)} ${p(.5,1)} Q${p(.31,1)} ${p(.25,.9)} L${p(.14,.83)} Q${p(.01,.73)} ${p(0,.56)} L${p(0,.22)} Q${p(.005,.04)} ${p(.075,0)} Z`,
         gt7:`M${p(.07,0)} L${p(.93,0)} L${p(.97,.11)} L${p(1,.25)} L${p(.99,.61)} L${p(.93,.76)} L${p(.85,.79)} Q${p(.81,.94)} ${p(.68,1)} L${p(.32,1)} Q${p(.19,.94)} ${p(.15,.79)} L${p(.07,.76)} L${p(.01,.61)} L${p(0,.25)} L${p(.03,.11)} Z`,
         forerunner:`M${p(.085,0)} L${p(.915,0)} L${p(.965,.09)} Q${p(1,.19)} ${p(1,.32)} L${p(.97,.62)} L${p(.87,.78)} L${p(.75,.86)} Q${p(.68,1)} ${p(.5,1)} Q${p(.32,1)} ${p(.25,.86)} L${p(.13,.78)} L${p(.03,.62)} L${p(0,.32)} Q${p(0,.19)} ${p(.035,.09)} Z`,
-        pace:`M${p(.1,0)} Q${p(.5,-.01)} ${p(.9,0)} L${p(.97,.12)} Q${p(1,.22)} ${p(1,.33)} L${p(.96,.63)} Q${p(.9,.78)} ${p(.75,.84)} Q${p(.68,1)} ${p(.5,1)} Q${p(.32,1)} ${p(.25,.84)} Q${p(.1,.78)} ${p(.04,.63)} L${p(0,.33)} Q${p(0,.22)} ${p(.03,.12)} Z`
+        pace:`M${p(.1,0)} Q${p(.5,-.01)} ${p(.9,0)} L${p(.97,.12)} Q${p(1,.22)} ${p(1,.33)} L${p(.96,.63)} Q${p(.9,.78)} ${p(.75,.84)} Q${p(.68,1)} ${p(.5,1)} Q${p(.32,1)} ${p(.25,.84)} Q${p(.1,.78)} ${p(.04,.63)} L${p(0,.33)} Q${p(0,.22)} ${p(.03,.12)} Z`,
+        races:`M${p(.02,0)} L${p(.98,0)} L${p(.99,.11)} L${p(1,.25)} L${p(.99,.61)} L${p(.93,.76)} L${p(.85,.79)} Q${p(.81,.94)} ${p(.68,1)} L${p(.32,1)} Q${p(.19,.94)} ${p(.15,.79)} L${p(.07,.76)} L${p(.01,.61)} L${p(0,.25)} L${p(.01,.11)} Z`
       };
       const bezel={
         balance:`M${p(.08,.07)} L${p(.92,.07)} M${p(.04,.24)} L${p(.96,.24)} M${p(.17,.88)} Q${p(.5,.96)} ${p(.83,.88)}`,
@@ -279,7 +281,8 @@
         galaxy:`M${p(.08,.07)} L${p(.92,.07)} M${p(.15,.8)} Q${p(.5,.9)} ${p(.85,.8)}`,
         gt7:`M${p(.07,.1)} L${p(.93,.1)} M${p(.025,.26)} L${p(.975,.26)} M${p(.15,.78)} L${p(.85,.78)}`,
         forerunner:`M${p(.085,.09)} L${p(.915,.09)} M${p(.05,.29)} L${p(.95,.29)} M${p(.25,.85)} Q${p(.5,.94)} ${p(.75,.85)}`,
-        pace:`M${p(.1,.09)} Q${p(.5,.05)} ${p(.9,.09)} M${p(.2,.82)} Q${p(.5,.93)} ${p(.8,.82)}`
+        pace:`M${p(.1,.09)} Q${p(.5,.05)} ${p(.9,.09)} M${p(.2,.82)} Q${p(.5,.93)} ${p(.8,.82)}`,
+        races:`M${p(.03,.1)} L${p(.97,.1)} M${p(.02,.26)} L${p(.98,.26)} M${p(.15,.78)} L${p(.85,.78)}`
       };
       let result='';
       if(detailed) {
@@ -310,6 +313,7 @@
       profilePlot.innerHTML=`<title>Watch thickness comparison</title><desc>${ids.length ? ids.map(w=>`${w.name}: ${depthText(w)}`).join('; ') : 'No watch selected.'} Outlines share the front view scale and align at the back edge.</desc><path class="guide" d="M54 118h352 M31 62v56 M27 62h8 M27 118h8"/><text class="guide-text" x="14" y="55">10 mm</text>`+ids.map(w=>`<g class="watch-group" data-id="${w.id}" style="color:${w.color}">${profileDrawing(w,5.6,230,118)}</g>`).join('');
       for (const button of list.querySelectorAll('.watch-toggle')) button.setAttribute('aria-pressed',String(visible.has(button.dataset.id)));
       document.getElementById('selected-count').textContent=`${ids.length} of ${watches.length}`;
+      document.getElementById('show-all').textContent=`Show all ${watches.length}`;
       document.getElementById('status').textContent=ids.length===0?'Select a watch to begin.':`${ids.length} ${ids.length===1?'watch':'watches'} shown. Tap a model to change the overlay.`;
       try { localStorage.setItem(storageKey,JSON.stringify([...visible])); } catch (_) {}
     }
